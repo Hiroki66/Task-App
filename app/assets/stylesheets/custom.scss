@@ -52,7 +52,7 @@ p {
 
 /* ヘッダー */
 
-header .container {
+.navbar{
   background-color: blue;
 }
 
@@ -60,8 +60,8 @@ header .container {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
+  font-style: italic;
   color: #fff;
-  text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
@@ -69,8 +69,39 @@ header .container {
 }
 
 #logo:hover {
-  color: #fff;
+  color: gray;
   text-decoration: none;
+}
+
+#menu1 {
+  font-weight: bold;
+  color: #fff;
+}
+
+#menu2 {
+  font-weight: bold;
+  color: #fff;
+}
+
+#menu3 {
+  font-weight: bold;
+  color: #fff;
+}
+
+#menu1:hover {
+  color: gray;
+}
+
+#menu2:hover {
+  color: gray;
+}
+
+#menu3:hover {
+  color: gray;
+}
+
+.navbar-nav {
+  color: #fff;
 }
 
 /* デバッグウインドウ */
@@ -101,3 +132,4 @@ header .container {
     color: $state-danger-text;
   }
 }
+
