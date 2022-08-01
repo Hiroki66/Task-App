@@ -73,8 +73,8 @@ p {
 
 /* ヘッダー */
 
-.navbar{
-  background-color: blue;
+#header {
+  background-color: teal;
 }
 
 #logo {
@@ -86,7 +86,6 @@ p {
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
-  background-color: blue;
 }
 
 #logo:hover {
@@ -94,35 +93,17 @@ p {
   text-decoration: none;
 }
 
-#menu1 {
+li .header-list {
   font-weight: bold;
-  color: #fff;
+  color: #fff !important;
 }
 
-#menu2 {
-  font-weight: bold;
-  color: #fff;
+li .header-list:hover {
+  color: gray !important;
 }
 
-#menu3 {
-  font-weight: bold;
-  color: #fff;
-}
-
-#menu1:hover {
-  color: gray;
-}
-
-#menu2:hover {
-  color: gray;
-}
-
-#menu3:hover {
-  color: gray;
-}
-
-.navbar-nav {
-  color: #fff;
+a {
+  text-decoration: none !important;
 }
 
 /* デバッグウインドウ */
@@ -154,3 +135,7 @@ p {
   }
 }
 
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: teal !important;
+  border-color: #337ab7;
+}
