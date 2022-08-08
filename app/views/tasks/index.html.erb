@@ -1,0 +1,27 @@
+<% provide(:title, current_user.name) %>
+
+<div class="container">
+  <h1><%= current_user.name %>のタスク一覧</h1>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <%= link_to "タスク新規作成", tasks_create_path, class: "btn btn-lg btn-primary pull-right" %>
+      <table class="table table-hover" id="table-tasks">
+        <thead>
+          <tr>
+            <th>名称</th>
+            <th>詳細</th>
+            <th>作成日</th>
+          </tr>
+        </thead>
+        <% @tasks.each do |task| %>
+          <tr>
+            <td><%= task.task %></td>
+            <td><%= task.detail %></td>
+            <td><%= task.created_at %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

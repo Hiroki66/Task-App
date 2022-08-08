@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   
+  def tasks
+    Task.where(user_id: self.id)
+  end
+  
   def show
     @user = User.find(params[:id])
   end
