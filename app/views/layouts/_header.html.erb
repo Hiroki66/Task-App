@@ -6,6 +6,7 @@
         <li><%= link_to "トップ", root_path, class: "header-list" %></li>
         <% if logged_in? %>
           <li><%= link_to "Users", '#', class: "header-list" %></li>
+          <li><%= link_to "タスク作成", new_user_task_path(current_user), class: "header-list" %></li>
           <li class="dropdown">
             <a href="#", class="dropdown-toggle header-list" data-toggle="dropdown">
               <%= current_user.name %> <b class="caret"></b>
@@ -14,7 +15,7 @@
               <li><%= link_to "プロフィール", current_user %></li>
               <li><%= link_to "設定", '#' %></li>
               <li class="divider"></li>
-              <li><%= link_to "タスク一覧", tasks_index_path %></li>
+              <li><%= link_to "タスク一覧", user_tasks_path(current_user) %></li>
               <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
             </ul>
           </li>
