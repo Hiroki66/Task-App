@@ -9,18 +9,26 @@
       <table class="table table-hover" id="table-tasks">
         <thead>
           <tr>
-            <th>名称</th>
-            <th>詳細</th>
-            <th>作成日</th>
+            <th><%= Task.human_attribute_name :task %></th>
+            <th><%= Task.human_attribute_name :detail %></th>
+            <th><%= Task.human_attribute_name :created_at %></th>
             <th></th>
           </tr>
         </thead>
         <% @tasks.each do |task| %>
           <tr>
             <td><%= link_to task.task, user_task_path(@user, task) %></td>
-            <td><%= task.detail %></td>
+              <td>
+                <%= task.detail %>
+              </td>
             <td><%= task.created_at %></td>
-            <td></td>
+            <td>
+              <!--% if current_user.admin && !current_user?(user) %>-->
+                <%= link_to "編集", edit_user_task_path(@user, task), class: "btn btn-success" %>
+                <%= link_to "削除", user_task_path(@user, task), method: :delete,
+                  data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+              <!--% end %>-->
+            </td>
           </tr>
         <% end %>
       </table>

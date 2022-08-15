@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_user, only: [:index, :show]
+  before_action :set_user, only: [:index, :show, :edit, :update, :destroy]
   
   def new
     @task = Task.new
@@ -17,38 +17,43 @@ class TasksController < ApplicationController
       else
         render :new
       end
+    # @task = Task.find(params[:id])
   end
   
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(created_at: :desc)
     @task = @user.tasks
   end
   
   def show
+    @task = Task.find(params[:id])
   end
   
   def edit
-    @task = Task.find(params[:task])
+    @task = Task.find(params[:id])
   end
   
   def update
+    @task = Task.find(params[:id])
     @task.task = params[:task]
-    if @post.save
-      flash[:notice] = "編集しました。"
-      redirect_to tasks_index_url
+    @task.detail = params[:detail]
+    if @task.save
+      flash[:success] = "編集しました。"
+      redirect_to user_tasks_url
     else
       render :edit
     end
   end
 
   def destroy
+    @task = Task.find(params[:id])
     @task.destroy
-    flash[:notice] = "削除しました。"
-    redirect_to tasks_index_url
+    flash[:danger] = "削除しました。"
+    redirect_to user_tasks_url
   end
 end
 
 
 def set_user
-@user = User.find(params[:user_id])
+  @user = User.find(params[:user_id])
 end

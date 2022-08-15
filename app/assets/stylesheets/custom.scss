@@ -11,6 +11,13 @@ section {
   overflow: auto;
 }
 
+textarea.form-control {
+  height: auto;
+}
+.label-form {
+  margin-top: 5px;
+}
+
 textarea {
   resize: vertical;
 }
@@ -19,6 +26,9 @@ textarea .form-control{
   height: auto;
 }
 
+.btn-form {
+  margin-top: 10px;
+}
 
 .center {
   text-align: center;
