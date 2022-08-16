@@ -54,6 +54,11 @@ form {
     display: block;
     margin-top: 0em;
 }
+
+#table-user {
+    table-layout: fixed;
+    width: 100%;
+}
 /* タイポグラフィ */
 
 h1, h2, h3, h4, h5, h6 {
