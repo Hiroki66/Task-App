@@ -12,7 +12,7 @@
           </tr>
           <tr>
             <th class="active">名称</th>
-            <td><%= @task.task %></td>
+            <td><%= @task.content %></td>
           </tr>
           <tr>
             <th class="active">詳細</th>
@@ -32,7 +32,7 @@
       </table>
       <%= link_to "編集", edit_user_task_path, class: "btn btn-lg btn-success" %>
       <%= link_to "削除", user_task_path(@task), method: :delete,
-          data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+          data: { confirm: "#{@task.content}を削除してよろしいですか？" }, class: "btn btn-danger" %>
     </div>
   </div>
 </div>

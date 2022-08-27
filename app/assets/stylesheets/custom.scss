@@ -91,6 +91,9 @@ p {
   line-height: 1.7em;
 }
 
+#task-name {
+  font-size: 1.8rem;
+}
 /* ヘッダー */
 
 #header {
@@ -126,6 +129,10 @@ a {
   text-decoration: none !important;
 }
 
+li .dropdown-header {
+  background-color: rgba(200,200,200,0.5);
+  font-weight: bold;
+}
 /* デバッグウインドウ */
 
 .debug_dump {

@@ -25,7 +25,11 @@
           <span>ログイン情報を記憶する</span>
         <% end %>
         
-        <%= f.submit"ログイン", class: "btn btn-primary btn-block btn-login" %>
+        <% if logged_in? %>
+          <%= f.submit"ログイン状態です", class: "btn btn-primary btn-block btn-login disabled" %>
+        <% else %>
+          <%= f.submit"ログイン", class: "btn btn-primary btn-block btn-login" %>
+        <% end %>
       <% end %>
     </div>
   </div>

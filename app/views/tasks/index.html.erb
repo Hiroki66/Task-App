@@ -10,24 +10,20 @@
         <thead>
           <tr>
             <th><%= Task.human_attribute_name :task %></th>
-            <th><%= Task.human_attribute_name :detail %></th>
             <th><%= Task.human_attribute_name :created_at %></th>
             <th></th>
           </tr>
         </thead>
         <% @tasks.each do |task| %>
           <tr>
-            <td><%= link_to task.task, user_task_path(@user, task) %></td>
-              <td>
-                <%= task.detail %>
-              </td>
+            <td><%= link_to task.content, user_task_path(@user, task), id: "task-name" %></td>
             <td><%= task.created_at %></td>
             <td>
-              <!--% if current_user.admin && !current_user?(user) %>-->
+              <!--% if admin_or_correct_user %-->
                 <%= link_to "編集", edit_user_task_path(@user, task), class: "btn btn-success" %>
                 <%= link_to "削除", user_task_path(@user, task), method: :delete,
-                  data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
-              <!--% end %>-->
+                  data: { confirm: "#{task.content}を削除してよろしいですか？" }, class: "btn btn-danger" %>
+              <!--% end %-->
             </td>
           </tr>
         <% end %>

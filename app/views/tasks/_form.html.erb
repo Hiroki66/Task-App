@@ -1,11 +1,11 @@
-<%= form_with(model: [@user, @task], url: edit_user_task_path, local: true, method: :patch) do |f| %>
-  <!--%= render 'shared/error_messages', object: @task %>-->
+<%= form_with(model: [@user, @task], local: true) do |f| %>
+  <%= render 'shared/error_messages', object: @task %>
 
-  <%= f.label :name, class: "label-form" %>
-  <%= f.text_field :name, class: "form-control" %>
+<%= f.label :task, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :content, class: "form-control" %>
 
-  <%= f.label :email, class: "label-form" %>
-  <%= f.text_field :email, class: "form-control" %>
-  
-  <%= f.submit "登録", class: "btn btn-primary btn-block btn-form" %>
+  <%= f.label :detail, class: "label-#{yield(:class_text)}" %>
+  <%= f.email_field :detail, class: "form-control" %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>
 <% end %>
