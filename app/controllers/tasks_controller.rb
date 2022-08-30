@@ -1,7 +1,9 @@
 class TasksController < ApplicationController
-  before_action :set_user, only: [:index, :show, :create, :edit, :update, :destroy]
+  before_action :set_user, only: [:index,:new, :show, :create, :edit, :update, :destroy]
   before_action :logged_in?, only: [:edit, :update]
-  # before_action :admin_or_correct_user, only: [:index, :edit, :update]
+  before_action :logged_in_user, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:index, :new, :create, :show, :update, :destroy]
+  helper_method :admin_or_correct_user
   
   def new
     @task = Task.new
@@ -48,6 +50,14 @@ class TasksController < ApplicationController
     flash[:danger] = "削除しました。"
     redirect_to user_tasks_url
   end
+  
+  def admin_or_correct_user
+      @user = User.find(params[:user_id]) if @user.blank?
+      unless current_user?(@user) || current_user.admin?
+        flash[:danger] = "編集権限がありません。"
+        redirect_to(root_url)
+      end  
+  end
 
 private
 
@@ -56,14 +66,6 @@ private
   end
 
   def set_user
-    @user = current_user
-  end
-  
-  def admin_or_correct_user
-      @user = User.find(params[:user_id]) if @user.blank?
-      unless current_user?(@user) || current_user.admin?
-        flash[:danger] = "編集権限がありません。"
-        redirect_to(root_url)
-      end  
+    @user = User.find(params[:user_id])
   end
 end    

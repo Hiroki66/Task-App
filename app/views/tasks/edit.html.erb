@@ -11,7 +11,7 @@
         <%= f.text_field :content, class: "form-control", value: @task.content %>
       
         <%= f.label :detail, class: "label-form" %>
-        <%= f.text_field :detail, class: "form-control", value: @task.detail %>
+        <%= f.text_area :detail, class: "form-control", value: @task.detail, row: 5 %>
         
         <%= f.submit "更新", class: "btn btn-primary btn-form" %>
         <%= link_to "キャンセル", user_tasks_path, class: "btn btn-default btn-form" %>

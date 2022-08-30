@@ -17,22 +17,24 @@
           <tr>
             <th class="active">詳細</th>
             <td>
-              <%= text_url_to_link((h(@task.detail).html_safe)).html_safe %>
+              <%= text_url_to_link((h(@task.detail).gsub(/\r\n|\r|\n/, "<br />").html_safe)).html_safe %>
             </td>
           </tr>
           <tr>
             <th class="active">作成日</th>
-            <td><%= @task.created_at %></td>
+            <td><%= l(@task.created_at, format: :long) %></td>
           </tr>
           <tr>
             <th class="active">更新日</th>
-            <td><%= @task.updated_at %></td>
+            <td><%= l(@task.updated_at, format: :long) %></td>
           </tr>
         </tbody>
       </table>
+      <div>
       <%= link_to "編集", edit_user_task_path, class: "btn btn-lg btn-success" %>
       <%= link_to "削除", user_task_path(@task), method: :delete,
-          data: { confirm: "#{@task.content}を削除してよろしいですか？" }, class: "btn btn-danger" %>
+          data: { confirm: "#{@task.content}を削除してよろしいですか？" }, class: "btn btn-lg btn-danger" %>
+      </div>
     </div>
   </div>
 </div>

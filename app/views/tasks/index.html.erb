@@ -1,7 +1,7 @@
 <% provide(:title, current_user.name) %>
 
 <div class="container">
-  <h1><%= current_user.name %>のタスク一覧</h1>
+  <h1><%= @user.name %>のタスク一覧</h1>
   
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
@@ -17,13 +17,13 @@
         <% @tasks.each do |task| %>
           <tr>
             <td><%= link_to task.content, user_task_path(@user, task), id: "task-name" %></td>
-            <td><%= task.created_at %></td>
+            <td><%= l(task.created_at, format: :long)%></td>
             <td>
-              <!--% if admin_or_correct_user %-->
+              <% if !admin_or_correct_user %>
                 <%= link_to "編集", edit_user_task_path(@user, task), class: "btn btn-success" %>
                 <%= link_to "削除", user_task_path(@user, task), method: :delete,
                   data: { confirm: "#{task.content}を削除してよろしいですか？" }, class: "btn btn-danger" %>
-              <!--% end %-->
+              <% end %>
             </td>
           </tr>
         <% end %>
